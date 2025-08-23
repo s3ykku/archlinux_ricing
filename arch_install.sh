@@ -2,8 +2,6 @@
 
 DEVICE="/dev/sdb"
 
-pacman -Sy reflector git --noconfirm
-
 reflector --verbose --country "Russia" --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 sed -i '/ParallelDownloads = 5/c\ParallelDownloads = 25' /etc/pacman.conf
