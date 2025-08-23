@@ -1,10 +1,6 @@
 #!/bin/bash
 
 DEVICE="/dev/sdb"
-USERNAME="username"
-PASSWORD="password"
-TIMEZONE="Europe/Moscow"
-LOCALE="ru_RU.UTF-8"
 
 reflector --verbose --country "Russia" --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 
@@ -36,25 +32,25 @@ arch-chroot /mnt /bin/bash <<EOF
 
 systemctl enable NetworkManager
 
-ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 hwclock --systohc
 
-echo "$LOCALE UTF-8" >> /etc/locale.gen
+echo "ru_RU.UTF-8 UTF-8" >> /etc/locale.gen
 
 locale-gen
 
 echo "LANG=$LOCALE" > /etc/locale.conf
 
-echo "root:$PASSWORD" | chpasswd
+echo "root:your_passwd" | chpasswd
 
-useradd -m $USERNAME
+useradd -m user_name
 
-echo "$USERNAME:$PASSWORD" | chpasswd
+echo "user_name:passwd" | chpasswd
 
-echo "%USERNAME ALL=(ALL) ALL" >> /etc/sudoers
+echo "user_name ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
-grub-install $DEVICE
+grub-install /dev/sdb
 
 sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/c\GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"' /etc/default/grub
 
