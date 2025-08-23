@@ -2,6 +2,8 @@
 
 DEVICE="/dev/sdb"
 
+pacman -Sy reflector git --noconfirm
+
 reflector --verbose --country "Russia" --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 sed -i '/ParallelDownloads = 5/c\ParallelDownloads = 25' /etc/pacman.conf
@@ -40,7 +42,7 @@ echo "ru_RU.UTF-8 UTF-8" >> /etc/locale.gen
 
 locale-gen
 
-echo "LANG=$LOCALE" > /etc/locale.conf
+echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
 
 echo "root:your_passwd" | chpasswd
 
@@ -50,7 +52,7 @@ echo "user_name:passwd" | chpasswd
 
 echo "user_name ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
-grub-install /dev/sdb
+grub-install --target=x86_64-efi --efi-directory=/boot/efi
 
 sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/c\GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"' /etc/default/grub
 
