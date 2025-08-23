@@ -32,7 +32,7 @@ pacstrap /mnt base base-devel linux linux-firmware linux-headers nano vim bash-c
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt
+arch-chroot /mnt /bin/bash <<EOF
 
 systemctl enable NetworkManager
 
@@ -61,5 +61,7 @@ sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/c\GRUB_CMDLINE_LINUX_DEFA
 grub-mkconfig -o /boot/grub/grub.cfg
 
 exit
+
+EOF
 
 umount -R /mnt
