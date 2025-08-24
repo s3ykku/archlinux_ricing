@@ -31,3 +31,7 @@ cp ${PATHFROM}/scripts/waybar/launch.sh ${PATHTOSCRIPTS}/waybar/
 chmod +x ${PATHTOSCRIPTS}/waybar/launch.sh
 
 chmod +x ${PATHTOSCRIPTS}/grim/screenshot_to_clipboard.sh
+
+sudo timedatectl set-ntp true
+
+bash ${PATHTOSCRIPTS}/waybar/launch.sh
