@@ -28,7 +28,7 @@ mkdir -p /mnt/boot/efi
 
 mount ${DEVICE}1 /mnt/boot/efi
 
-pacstrap /mnt base base-devel linux linux-firmware linux-headers nano vim bash-completion grub efibootmgr networkmanager ttf-opensans ttf-hack ttf-dejavu ttf-ubuntu-font-family ttf-font-awesome ttf-nerd-fonts-symbols man-db man-pages fish nvidia wayland hyprland hyprpaper xdg-desktop-portal-hyprland waybar wofi pipewire pipewire-pulse wireplumber wl-clipboard grim slurp firefox git kitty btop celluloid imv ranger sof-firmware wiremix telegram-desktop fastfetch
+pacstrap /mnt base base-devel linux linux-firmware linux-headers nano vim bash-completion grub efibootmgr networkmanager ttf-opensans ttf-hack ttf-dejavu ttf-ubuntu-font-family ttf-font-awesome ttf-nerd-fonts-symbols man-db man-pages fish nvidia wayland hyprland hyprpaper xdg-desktop-portal-hyprland waybar wofi pipewire pipewire-pulse wireplumber wl-clipboard grim slurp firefox git kitty btop celluloid imv ranger sof-firmware wiremix telegram-desktop fastfetch code
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -59,6 +59,8 @@ grub-install $DEVICE
 sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/c\GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"' /etc/default/grub
 
 grub-mkconfig -o /boot/grub/grub.cfg
+
+sed -i '/ParallelDownloads = 5/c\ParallelDownloads = 25' /etc/pacman.conf
 
 exit
 
