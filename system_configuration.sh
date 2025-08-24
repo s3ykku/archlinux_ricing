@@ -1,8 +1,8 @@
 #!/bin/bash
 
-PATHFROM="~/Downloads/archlinux_ricing/s3ykku"
-PATHTO="~/.config"
-PATHTOSCRIPTS="~/.scripts"
+PATHFROM="/home/roman/Downloads/archlinux_ricing/s3ykku"
+PATHTO="/home/roman/.config"
+PATHTOSCRIPTS="/home/roman/.scripts"
 
 mkdir -p ${PATHTO}/fish
 
@@ -24,6 +24,8 @@ cp ${PATHFROM}/config/waybar/config.jsonc ${PATHTO}/waybar/
 
 cp ${PATHFROM}/config/waybar/style.css ${PATHTO}/waybar/
 
+cp ${PATHFROM}/config/kitty/kitty.conf ${PATHTO}/kitty
+
 cp ${PATHFROM}/scripts/grim/screenshot_to_clipboard.sh ${PATHTOSCRIPTS}/grim/
 
 cp ${PATHFROM}/scripts/waybar/launch.sh ${PATHTOSCRIPTS}/waybar/
@@ -35,3 +37,5 @@ chmod +x ${PATHTOSCRIPTS}/grim/screenshot_to_clipboard.sh
 sudo timedatectl set-ntp true
 
 bash ${PATHTOSCRIPTS}/waybar/launch.sh
+
+chsh -s $(which fish)
