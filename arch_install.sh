@@ -1,6 +1,10 @@
 #!/bin/bash
 
 DEVICE="/dev/sdb"
+USERNAME="username"
+PASSWORD="password"
+ROOTPASSWORD="password_root"
+LOCALE="ru_RU.UTF-8"
 
 reflector --verbose --country "Russia" --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 
@@ -24,7 +28,7 @@ mkdir -p /mnt/boot/efi
 
 mount ${DEVICE}1 /mnt/boot/efi
 
-pacstrap /mnt base base-devel linux linux-firmware linux-headers nano vim bash-completion grub efibootmgr networkmanager ttf-opensans ttf-hack ttf-dejavu ttf-ubuntu-font-family ttf-font-awesome ttf-nerd-fonts-symbols man-db man-pages fish nvidia wayland hyprland hyprpaper xdg-desktop-portal-hyprland waybar wofi pipewire pipewire-pulse wireplumber wl-clipboard grim slurp firefox git kitty btop celluloid imv ranger sof-firmware wiremix telegram-desktop
+pacstrap /mnt base base-devel linux linux-firmware linux-headers nano vim bash-completion grub efibootmgr networkmanager ttf-opensans ttf-hack ttf-dejavu ttf-ubuntu-font-family ttf-font-awesome ttf-nerd-fonts-symbols man-db man-pages fish nvidia wayland hyprland hyprpaper xdg-desktop-portal-hyprland waybar wofi pipewire pipewire-pulse wireplumber wl-clipboard grim slurp firefox git kitty btop celluloid imv ranger sof-firmware wiremix telegram-desktop fastfetch
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -36,21 +40,21 @@ ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 hwclock --systohc
 
-echo "ru_RU.UTF-8 UTF-8" >> /etc/locale.gen
+echo "$LOCALE UTF-8" >> /etc/locale.gen
 
 locale-gen
 
-echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
+echo "LANG=$LOCALE" > /etc/locale.conf
 
-echo "root:your_passwd" | chpasswd
+echo "root:$ROOTPASSWORD" | chpasswd
 
-useradd -m user_name
+useradd -m $USERNAME
 
-echo "user_name:passwd" | chpasswd
+echo "$USERNAME:$PASSWORD" | chpasswd
 
-echo "user_name ALL=(ALL:ALL) ALL" >> /etc/sudoers
+echo "$USERNAME ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
-grub-install --target=x86_64-efi --efi-directory=/boot/efi
+grub-install $DEVICE
 
 sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/c\GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"' /etc/default/grub
 
