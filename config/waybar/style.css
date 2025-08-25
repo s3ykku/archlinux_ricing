@@ -1,0 +1,230 @@
+/**********/
+/* COLORS */
+/**********/
+
+@define-color base #222222;
+@define-color white #ffffff;
+
+/**************/
+/* ANIMATIONS */
+/**************/
+
+@keyframes blink {
+        from {
+            background-color: @base;
+            color: @white;
+        }
+        to {
+            background-color: @white;
+            color: @base;
+        }
+    }
+
+@keyframes round {
+    from {
+        border-radius: 20px;
+    }
+    to {
+        border-radius: 11px;
+    }
+}
+
+/*****************/
+/* MAIN SETTINGS */
+/*****************/
+
+* {
+    font-family: JetBrainsMonoNL Nerd Font Propo, Symbols Nerd Font;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    border-radius: 0px;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0);
+    color: @white;
+    transition-property: background-color;
+    transition-duration: 1s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*******************************/
+/* MODULES LEFT, CENTER, RIGHT */
+/*******************************/
+
+.modules-left {
+    background-color: transparent;
+    margin-left: 4px;
+    margin-top: 4px;
+}
+
+.modules-center {
+    background-color: @base;
+    border-radius: 12px;
+    margin-top: 4px;
+}
+
+.modules-right {
+    margin-right: 0;
+    background-color: @base;
+    border-radius: 12px;
+    margin-right: 4px;
+    margin-top: 4px;
+}
+
+/****************/
+/* MODULES LEFT */
+/****************/
+
+#workspaces {
+    background-color: @base;
+    border-radius: 12px;
+}
+
+#workspaces button {
+    background-color: transparent;
+    color: @white;
+}
+
+#workspaces button:hover {
+    background-color: @white;
+    color: @base;
+    border-radius: 11px;
+    animation: blink 0.3s linear 0s 1 alternate;
+}
+
+#workspaces button.active {
+    background-color: #464646;
+    border-radius: 11px;
+}
+
+#workspaces button.urgent {
+    background-color: #4c5f63;
+}
+
+#window {
+    background-color: @base;
+    border-radius: 12px;
+    margin-left: 4px;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+#window:hover {
+    background-color: @white;
+    color: @base;
+    border-radius: 11px;
+    animation: blink 0.3s linear 0s 1 alternate;
+}
+
+button:hover {
+    box-shadow: none;
+}
+
+/******************/
+/* MODULES CENTER */
+/******************/
+
+#cpu, #memory {
+    background-color: transparent;
+    color: @white;
+}
+
+#cpu {
+    /*min-width: 64px;*/
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+#cpu:hover {
+    background-color: @white;
+    color: @base;
+    border-radius: 11px;
+    animation: blink 0.3s linear 0s 1 alternate;
+}
+
+#memory {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+#memory:hover {
+    background-color: @white;
+    color: @base;
+    border-radius: 11px;
+    animation: blink 0.3s linear 0s 1 alternate;
+}
+
+#disk {
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+#disk:hover {
+    background-color: @white;
+    color: @base;
+    border-radius: 11px;
+    animation: blink 0.3s linear 0s 1 alternate;
+}
+
+/*****************/
+/* MODULES RIGHT */
+/*****************/
+
+#language {
+    color: @white;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+#language:hover {
+    background-color: @white;
+    color: @base;
+    border-radius: 11px;
+    animation: blink 0.3s linear 0s 1 alternate;
+}
+
+#pulseaudio, #pulseaudio:hover #network, #network.disconnected, #clock {
+    background-color: transparent;
+    color: @white;
+}
+
+#pulseaudio {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+#pulseaudio:hover {
+    background-color: @white;
+    color: @base;
+    border-radius: 11px;
+    animation: blink 0.3s linear 0s 1 alternate;
+}
+
+#network {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+#network:hover {
+    background-color: @white;
+    color: @base;
+    border-radius: 11px;
+    animation: blink 0.3s linear 0s 1 alternate;
+}
+
+#clock {
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+#clock:hover {
+    background-color: @white;
+    color: @base;
+    border-radius: 11px;
+    animation: blink 0.3s linear 0s 1 alternate;
+}
