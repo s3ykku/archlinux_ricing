@@ -1,0 +1,19 @@
+configuration {
+  show-icons: true;
+  display-drun: ">";
+  hide-scrollbar: false;
+  terminal: "kitty";
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: false;
+      sorting-method: "name";
+      show-hidden: true;
+  }
+}
+
+@theme "s3ykku"
+
+

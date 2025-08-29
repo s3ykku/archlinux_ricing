@@ -1,0 +1,31 @@
+[mgr]
+show_hidden = true
+
+[preview]
+max_width = 10000
+max_height = 10000
+
+[tasks]
+image_bound = [0, 0]
+
+[opener]
+play = [
+	{ run = 'mpv "$@"', orphan = true, for = "linux" }
+]
+edit = [
+	{ run = 'vim "$@"', block = true, for = "linux" }
+]
+audio = [
+	{ run = 'cmus "$@"', orphan = true, for = "linux" }
+]
+photo = [
+	{ run = 'imv "$@"', orphan = true, for = "linux" }
+]
+
+[open]
+rules = [
+	{ mime = "text/*", use = "edit" },
+	{ mime = "video/*", use = "play" },
+	{ mime = "audio/*", use = "audio" },
+	{ mime = "image/*", use = "photo" },
+]
