@@ -1,6 +1,0 @@
-syntax on
-colorscheme slate
-set background=dark
-
-set number
-set relativenumber
