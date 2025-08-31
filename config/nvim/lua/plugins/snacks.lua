@@ -41,8 +41,8 @@ return {
             { section = "startup" },
             },
         },
-    },
-    lazygit = {
-            
+        lazygit = {
+            configure = true,
+        },
     },
 }
