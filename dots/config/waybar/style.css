@@ -1,0 +1,197 @@
+/**********/
+/* COLORS */
+/**********/
+
+@define-color bg-color        #222222;
+@define-color def-color       #eeeeee;
+
+/*****************/
+/* MAIN SETTINGS */
+/*****************/
+
+* {
+    font-family: JetBrainsMonoNL Nerd Font Propo, Symbols Nerd Font;
+    font-weight: bold;
+    border: none;
+    font-size: 14px;
+    min-height: 36px;
+}
+
+window#waybar {
+    background-color: @bg-color;
+    color: @def-color;
+    border-radius: 11px;
+    transition-property: background-color;
+    transition-duration: 1s;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+    transition: none;
+}
+
+/*******************************/
+/* MODULES LEFT, CENTER, RIGHT */
+/*******************************/
+
+.modules-left {
+    background-color: transparent;
+	border-radius: 11px;
+}
+
+.modules-center {
+    background-color: transparent;
+    border-radius: 11px;
+}
+
+.modules-right {
+    background-color: transparent;
+    border-radius: 11px;
+}
+
+/****************/
+/* MODULES LEFT */
+/****************/
+
+#workspaces {
+    background-color: transparent;
+	border-radius: 11px;
+}
+
+#workspaces button {
+    background-color: transparent;
+    color: @def-color;
+    padding: 0px 10px;
+	border-radius: 10px;
+    transition-property: all;
+    transition-duration: 0.5s, 0.5s;
+    transition-timing-function: cubic-bezier(0, 0.7, 0.6, 1);
+}
+
+#workspaces button:hover {
+    background-color: @def-color;
+    color: @bg-color;
+}
+
+#workspaces button.active {
+    box-shadow: inset 0 -4px #ffffff;
+    border-radius: 11px;
+}
+
+#workspaces button.urgent {
+    background-color: @def-color;
+}
+
+#window {
+    background-color: transparent;
+    padding: 0px 9px;
+    border-radius: 11px;
+    transition-property: background-color, color;
+    transition-duration: 0.5s, 0.5s;
+    transition-timing-function: cubic-bezier(0, 0.7, 0.6, 1);
+}
+
+#window:hover {
+    background-color: @def-color;
+    color: @bg-color;
+    border-radius: 11px;
+}
+
+/******************/
+/* MODULES CENTER */
+/******************/
+
+#cpu {
+    padding: 0 8px;
+    border-radius: 11px;
+    transition-property: background-color, color;
+    transition-duration: 0.5s, 0.5s;
+    transition-timing-function: cubic-bezier(0, 0.7, 0.6, 1);
+}
+
+#cpu:hover {
+    background-color: @def-color;
+    color: @bg-color;
+}
+
+#memory {
+    padding: 0 8px;
+    border-radius: 11px;
+    transition-property: background-color, color;
+    transition-duration: 0.5s, 0.5s;
+    transition-timing-function: cubic-bezier(0, 0.7, 0.6, 1);
+}
+
+#memory:hover {
+    background-color: @def-color;
+    color: @bg-color;
+}
+
+#disk {
+    padding: 0 8px;
+    border-radius: 11px;
+    transition-property: background-color, color;
+    transition-duration: 0.5s, 0.5s;
+    transition-timing-function: cubic-bezier(0, 0.7, 0.6, 1);
+}
+
+#disk:hover {
+    background-color: @def-color;
+    color: @bg-color;
+}
+
+/*****************/
+/* MODULES RIGHT */
+/*****************/
+
+#language {
+    padding: 0 8px;
+    border-radius: 11px;
+    transition-property: background-color, color;
+    transition-duration: 0.5s, 0.5s;
+    transition-timing-function: cubic-bezier(0, 0.7, 0.6, 1);
+}
+
+#language:hover {
+    background-color: @def-color;
+    color: @bg-color;
+}
+
+#pulseaudio {
+    padding: 0 6px;
+    border-radius: 11px;
+    transition-property: background-color, color;
+    transition-duration: 0.5s, 0.5s;
+    transition-timing-function: cubic-bezier(0, 0.7, 0.6, 1);
+}
+
+#pulseaudio:hover {
+    background-color: @def-color;
+    color: @bg-color;
+}
+
+#network {
+    padding: 0 6px;
+    border-radius: 11px;
+    transition-property: background-color, color;
+    transition-duration: 0.5s, 0.5s;
+    transition-timing-function: cubic-bezier(0, 0.7, 0.6, 1);
+}
+
+#network:hover {
+    background-color: @def-color;
+    color: @bg-color;
+}
+
+#clock {
+    padding: 0 6px;
+    border-radius: 10px;
+    transition-property: background-color, color;
+    transition-duration: 0.5s, 0.5s;
+    transition-timing-function: cubic-bezier(0, 0.7, 0.6, 1);
+}
+
+#clock:hover {
+    background-color: @def-color;
+    color: @bg-color;
+}
