@@ -21,6 +21,8 @@ cp -r ${PATHFROM}/config/fastfetch ${PATHTO}/.config
 
 cp -r ${PATHFROM}/scripts ${PATHTO}/
 
+mkdir ${PATHFROM}/pictures
+
 cp -r ${PATHFROM}/wallpapers ${PATHTO}/pictures
 
 chmod +x ${PATHTO}/.config/waybar/launch.sh
